@@ -22,31 +22,29 @@ REDUX
 
   State:
 
-    - App List = []
-    - Hosts List = []
-    - isVisible = false
-    - View style = "grid"
+    - topAppsByHost: {},
+    - hostsList: [],
+    - isVisible: false,
+    - viewStyle: 'grid'
 
   Actions:
-    
-    - getApps
-      • out: [apps]
-    
-    - filterByHost
+        
+    - groupAppsByHost
       • in: [apps]
       • out: {apps by host}
     
-    - sorthByApex
+    - sortAppsByApdex
       • in: [eachApp]
       • out: [sortedApp]
     
-    - createHostsList
+    - filterTopApps
       • in: [apps]
       • out: [hosts]
     
     - getTopAppsByHost
-      • in: [apps], 'hostName', amount
-      • out: [topApps]
+      • groupAppsByHost
+      • sortAppsByApdex
+      • filterTopApps
     
     - addAppToHosts
       • in: {app}, 'hostName'
