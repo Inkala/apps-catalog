@@ -1,0 +1,92 @@
+<App /> (Router)
+  │
+  │─ <Home />
+  │     │
+  │     │─ <ViewChanger /> (UI)
+  │     │
+  │     ╵─ <HostList />
+  │           │
+  │           ╵─ <HostCard />
+  │
+  │─ <HostsPage />
+  │     │
+  │     │─ <ViewChanger />
+  │     │
+  │     ╵─ <AppsList />
+  │           │
+  │           ╵─ <AppCard />
+  │
+  ╵─ <Modal /> (UI)
+
+REDUX
+
+  State:
+
+    - App List = []
+    - Hosts List = []
+    - isVisible = false
+    - View style = "grid"
+
+  Actions:
+    
+    - getApps
+      • out: [apps]
+    
+    - filterByHost
+      • in: [apps]
+      • out: {apps by host}
+    
+    - sorthByApex
+      • in: [eachApp]
+      • out: [sortedApp]
+    
+    - createHostsList
+      • in: [apps]
+      • out: [hosts]
+    
+    - getTopAppsByHost
+      • in: [apps], 'hostName', amount
+      • out: [topApps]
+    
+    - addAppToHosts
+      • in: {app}, 'hostName'
+      • out: {apps by host}
+    
+    - removeAppFromHost
+      • in: {app}, 'hostName'
+      • out: {apps by host}
+
+COMPONENTS
+
+<App />: (Router)
+  - 
+
+<Header />:
+  - 
+
+<Home />:
+  - 
+
+<ViewChanger />:
+  - 
+
+<HostList />:
+  - 
+
+<HostCard />:
+  - 
+
+<HostsPage />:
+  - 
+
+<ViewChanger />:
+  - 
+
+<AppsList />:
+  - 
+
+<AppCard />:
+  - 
+
+<Modal />: 
+  - 
