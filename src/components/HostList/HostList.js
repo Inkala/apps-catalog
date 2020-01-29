@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import * as actions from '../../store/actions/actions';
 import HostCard from '../HostCard/HostCard';
@@ -17,7 +18,11 @@ class HostsList extends Component {
       <section className={classes.hostsList}>
         {topAppsByHost
           ? topAppsByHost.map(appsArray => {
-              return <HostCard key={appsArray.host} appList={appsArray} />;
+              return (
+                <Link to={`/hosts/${appsArray.hostName}`} key={appsArray.host}>
+                  <HostCard appList={appsArray} />
+                </Link>
+              );
             })
           : null}
       </section>

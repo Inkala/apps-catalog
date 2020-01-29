@@ -27,11 +27,14 @@ const reducer = (state = initialState, action) => {
         })
       );
       for (let host in allAppsObj) {
+        // Format name for titles and urls
+        const hostName = host.match(/(?<=\.)(.*?)(?=\.)/g)[0];
         allAppsObj[host] = [...allAppsObj[host]]
           .sort((a, b) => b.apdex - a.apdex)
           .slice(0, 25);
           appList.push({
             host,
+            hostName,
             apps: allAppsObj[host],
           })
       }
