@@ -7,10 +7,22 @@
   margin: 35px auto;
   background-color: white;
   text-align: center;
-  padding: 5px 20px 10px;
+  padding: 20px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
 
   h2 {
     font-weight: bold;
+    margin: 0;
+  }
+
+  .backButton {
+    background: none;
+    border: none;
+    font-size: 1em;
+    color: $main;
+    margin-right: 10px;
+    align-self: flex-end;
   }
 }
