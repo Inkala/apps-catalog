@@ -1,0 +1,24 @@
+@import '../../variables.scss';
+
+.header {
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid $main;
+  color: $main;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  font-weight: 400;
+  box-shadow: 0 1px 10px rgba(52, 136, 153, 0.5);
+}
+
+span {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+a {
+  color: $main;
+  text-decoration: none;
+}

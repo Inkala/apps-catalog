@@ -3,7 +3,7 @@ import HostList from '../../components/HostList/HostList'
 
 const Home = () => {
   return (
-    <section>
+    <section id="home">
       <HostList />
     </section>
   )
