@@ -1,0 +1,17 @@
+@import '../../variables.scss';
+
+.appsList {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px 0;
+
+  .title {
+    text-transform: uppercase;
+    margin: 10px 0;
+    font-weight: bold;
+    text-align: center;
+    color: $main;
+  }
+}

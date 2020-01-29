@@ -1,9 +1,7 @@
 import React from 'react';
 import shortid from 'shortid';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-import * as actions from '../../store/actions/actions';
 import classes from './HostCard.module.scss';
 
 const HostCard = props => {
@@ -12,8 +10,8 @@ const HostCard = props => {
     <article className={classes.hostCard}>
       <h2>{host}</h2>
       <ul>
-        {appList.map(app => (
-          <li key={shortid.generate()}>{app.name}</li>
+        {appList.map((app, i) => (
+          <li key={shortid.generate()}><span>{`${i + 1} - `}</span>{app.name}</li>
         ))}
       </ul>
     </article>
@@ -21,20 +19,8 @@ const HostCard = props => {
 };
 
 HostCard.propTypes = {
-  topAppsByHost: PropTypes.array,
-  onGetTopAppsByHost: PropTypes.func
+  appList: PropTypes.array,
+  host: PropTypes.string
 };
 
-const mapStateToProps = state => {
-  return {
-    topAppsByHost: state.topAppsByHost
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onGetTopAppsByHost: hostName => dispatch(actions.getTopAppsByHost(hostName))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(HostCard);
+export default HostCard;

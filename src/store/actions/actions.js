@@ -6,7 +6,7 @@ export const getAllTopApps = () => {
   };
 };
 
-export const getTopAppsByHost = (hostName) => {
+export const getTopAppsByHost = hostName => {
   return {
     type: actionTypes.GET_TOP_APPS_BY_HOST,
     hostName

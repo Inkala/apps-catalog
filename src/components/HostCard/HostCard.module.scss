@@ -1,6 +1,9 @@
+@import '../../variables.scss';
+
 .hostCard {
   background-color: white;
   padding: 15px 20px;
+  font-size: 0.9em;
   
   h2 {
     text-transform: capitalize;
@@ -9,11 +12,17 @@
   
   ul {
     margin: 0;
-    padding-left: 30px;
+    padding-left: 10px;
+    list-style: none;
   }
   
   li {
     text-align: left;
     margin: 5px 0;
+  }
+
+  span {
+    font-weight: 600;
+    color: $main;
   }
 }

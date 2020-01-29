@@ -1,0 +1,48 @@
+@import '../../variables.scss';
+
+.appCard {
+  background-color: white;
+  padding: 2% 3%;
+  margin: 10px 0;
+  font-size: 0.9em;
+
+  .cardTitle {
+    font-size: 1.35em;
+    margin: 0 0 8px;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0 auto;
+    width: 95%;
+    display: flex;
+
+    li {
+      list-style: none;
+    }
+
+    span {
+      color: $main;
+      font-weight: bold;
+    }
+  }
+
+  .stats {
+    li {
+      margin-right: auto;
+    }
+  }
+
+  .host, .contributors {
+    li {
+      text-transform: capitalize;
+      margin-right: 5px;
+      &:after {
+        content: ',';
+      }
+      &:first-child:after, &:last-child:after{
+        content: '';
+      }
+    }
+  }
+}
