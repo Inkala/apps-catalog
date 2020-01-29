@@ -8,42 +8,46 @@ import HostCard from '../HostCard/HostCard';
 import classes from './HostList.module.scss';
 
 class HostsList extends Component {
+
   componentDidMount() {
-    this.props.onGetTopAppsByHost();
+    this.props.onGetAllTopApps();
   }
 
   render() {
-    const { topAppsByHost } = this.props;
+    const { allTopApps } = this.props;
+    let appsList = [];
+    if (allTopApps) {
+      for (let host in allTopApps) {
+        const appCard = (
+          <Link to={`/hosts/${host}`} key={host}>
+            <HostCard host={host} appList={allTopApps[host].slice(0, 5)} />
+          </Link>
+        );
+        appsList.push(appCard);
+      }
+    }
     return (
       <section className={classes.hostsList}>
-        {topAppsByHost
-          ? topAppsByHost.map(appsArray => {
-              return (
-                <Link to={`/hosts/${appsArray.hostName}`} key={appsArray.host}>
-                  <HostCard appList={appsArray} />
-                </Link>
-              );
-            })
-          : null}
+        {appsList}
       </section>
     );
   }
 }
 
 HostsList.propTypes = {
-  topAppsByHost: PropTypes.array,
-  onGetTopAppsByHost: PropTypes.func
+  allTopApps: PropTypes.object,
+  onGetAllTopApps: PropTypes.func
 };
 
 const mapStateToProps = state => {
   return {
-    topAppsByHost: state.topAppsByHost
+    allTopApps: state.allTopApps
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetTopAppsByHost: () => dispatch(actions.getTopAppsByHost())
+    onGetAllTopApps: () => dispatch(actions.getAllTopApps())
   };
 };
 
