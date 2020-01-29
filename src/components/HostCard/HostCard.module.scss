@@ -4,6 +4,7 @@
   background-color: white;
   padding: 15px 20px;
   font-size: 0.9em;
+  box-sizing: border-box;
   
   h2 {
     text-transform: capitalize;
@@ -24,5 +25,10 @@
   span {
     font-weight: 600;
     color: $main;
+  }
+
+  &:hover {
+    border-bottom: 3px solid $lighter;
+    margin-bottom: -3px;
   }
 }

@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import classes from './AppCard.module.scss';
 
 const AppCard = props => {
-  console.log(props.app);
-
   const { app, order } = props;
   return (
     <article className={classes.appCard}>
@@ -23,7 +21,7 @@ const AppCard = props => {
           <span className={classes.title}>Host:</span>
         </li>
         {app.host.map(name => (
-          <li>{name.match(/(?<=\.)(.*?)(?=\.)/g)[0]}</li>
+          <li key={name} >{name.match(/(?<=\.)(.*?)(?=\.)/g)[0]}</li>
         ))}
       </ul>
       <ul className={classes.contributors}>
@@ -31,7 +29,7 @@ const AppCard = props => {
           <span className={classes.title}>Contributors:</span>
         </li>
         {app.contributors.map(contributor => (
-          <li>{contributor}</li>
+          <li key={contributor}>{contributor}</li>
         ))}
       </ul>
     </article>
