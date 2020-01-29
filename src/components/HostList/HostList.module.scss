@@ -1,0 +1,19 @@
+.hostsList {
+  display: grid;
+  grid-template-columns: repeat(1, auto);
+  grid-gap: 20px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .hostsList {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media (min-width: 900px) {
+  .hostsList {
+    grid-template-columns: repeat(3, auto);
+  }
+}
