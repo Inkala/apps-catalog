@@ -1,0 +1,16 @@
+@import '../../variables.scss';
+
+.notFound {
+  width: 50%;
+  border: 2px solid $lighter;
+  box-sizing: border-box;
+  margin: 35px auto;
+  background-color: white;
+  text-align: center;
+  padding: 5px 20px 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+
+  h2 {
+    font-weight: bold;
+  }
+}
