@@ -25,6 +25,10 @@ class AppsList extends Component {
               <AppCard key={shortid.generate()} app={app} order={i + 1} />
             ))
           : null}
+        <button
+          className={classes.backButton}
+          onClick={() => this.props.history.goBack()}
+        >{`<< Back`}</button>
       </section>
     );
   }

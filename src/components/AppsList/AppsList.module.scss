@@ -14,4 +14,13 @@
     text-align: center;
     color: $main;
   }
+
+  .backButton {
+    background: none;
+    border: none;
+    font-size: 1em;
+    color: $main;
+    margin: 2px 10px;
+    align-self: flex-end;
+  }
 }

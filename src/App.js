@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Header from './components/Header/Header';
 import Home from './containers/Home/Home';
-import HostsPage from './containers/HostsPage/HostsPage';
+import HostPage from './containers/HostPage/HostPage';
 import NotFound from './components/NotFound/NotFound';
 import classes from './App.module.scss';
 
@@ -12,7 +12,7 @@ function App() {
     <div className={classes.App}>
       <Header />
       <Switch>
-        <Route path="/hosts/:name" exact component={HostsPage} />
+        <Route path="/hosts/:name" exact component={HostPage} />
         <Route path="/" exact component={Home} />
         <Route component={NotFound} />
       </Switch>
