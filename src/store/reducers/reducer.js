@@ -1,14 +1,19 @@
 import * as actionTypes from '../actions/actionTypes';
-import { getAllTopApps, getTopAppsByHost, addAppToHost, removeAppFromHost } from '../../helpers/apps-service';
+import {
+  getAllTopApps,
+  getTopAppsByHost,
+  addAppToHost,
+  removeAppFromHost,
+  hostsList
+} from '../../helpers/apps-service';
 
 const initialState = {
   allTopApps: null,
+  hostsList,
   topAppsByHost: [],
   isVisible: false,
   viewStyle: 'grid'
 };
-
-// Object.keys(allTopApps)
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -30,7 +35,11 @@ const reducer = (state = initialState, action) => {
     case actionTypes.ADD_APP_TO_HOST:
       return {
         ...state,
-        topAppsByHost: addAppToHost(action.app, action.hostName)
+        topAppsByHost: addAppToHost(
+          action.app,
+          action.newHost,
+          action.currentHost
+        )
       };
     case actionTypes.REMOVE_APP_FROM_HOST:
       return {
@@ -43,3 +52,4 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
+

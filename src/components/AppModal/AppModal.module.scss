@@ -4,7 +4,7 @@
   position: fixed;
   width: 75%;
   align-self: center;
-  margin-top: 15%;
+  margin-top: 10%;
   padding: 30px 23px 15px;
   z-index: 500;
   background-color: white;
@@ -66,33 +66,6 @@
       &:first-child:after,
       &:last-child:after {
         content: '';
-      }
-    }
-  }
-  .actionsButtons {
-    display: flex;
-    justify-content: flex-end;
-
-    button {
-      color: white;
-      padding: 8px 12px 9px;
-      font-weight: 600;
-      border: none;
-      font-size: 0.9em;
-      margin: 2px 0 0 8px;
-    }
-
-    .add {
-      background-color: $lighter;
-       &:hover {
-         background-color: $main;
-       }
-    }
-    .remove {
-      background-color: $accent;
-      
-      &:hover {
-        background-color: #ce3d24;
       }
     }
   }

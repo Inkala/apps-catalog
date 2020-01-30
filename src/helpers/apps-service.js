@@ -22,7 +22,6 @@ const groupAppsByHost = () => {
 // Data is available as a global variable
 const allAppsObj = groupAppsByHost();
 
-
 const sortApps = allApps => {
   const sortedApps = allApps.sort((a, b) => b.apdex - a.apdex);
   return sortedApps;
@@ -37,15 +36,18 @@ export const getAllTopApps = () => {
 };
 
 export const getTopAppsByHost = hostName => {
-  return sortApps(allAppsObj[hostName]).slice(0, 25)
+  return sortApps(allAppsObj[hostName]).slice(0, 25);
 };
 
-export const addAppToHost = (app, hostName) => {
-  
-}
+export const addAppToHost = (app, newHost, currentHost) => {
+  allAppsObj[newHost].push(app);
+  return getTopAppsByHost(currentHost);
+};
 
 export const removeAppFromHost = (app, hostName) => {
   const index = allAppsObj[hostName].indexOf(app);
   allAppsObj[hostName].splice(index, 1);
   return getTopAppsByHost(hostName);
-}
+};
+
+export const hostsList = Object.keys(allAppsObj);

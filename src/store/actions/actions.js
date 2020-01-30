@@ -18,9 +18,12 @@ export const changeViewStyle = style => {
   };
 };
 
-export const addAppToHost = (app, hostName) => {
+export const addAppToHost = (app, newHost, currentHost) => {
   return {
-    type: actionTypes.ADD_APP_TO_HOST
+    type: actionTypes.ADD_APP_TO_HOST,
+    app,
+    newHost,
+    currentHost
   };
 };
 
