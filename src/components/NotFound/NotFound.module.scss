@@ -24,5 +24,9 @@
     color: $main;
     margin-right: 10px;
     align-self: flex-end;
+
+    &:hover {
+      font-weight: 600;
+    }
   }
 }

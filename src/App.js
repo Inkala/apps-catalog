@@ -8,6 +8,11 @@ import NotFound from './components/NotFound/NotFound';
 import classes from './App.module.scss';
 
 function App() {
+  /*
+  TODO:
+    - redirect when no app (no host)
+  */
+
   return (
     <div className={classes.App}>
       <Header />

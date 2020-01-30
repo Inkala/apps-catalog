@@ -14,9 +14,9 @@
   │     │
   │     ╵─ <AppsList />
   │           │
-  │           ╵─ <AppCard />
+  │           ╵─ <AppModal />
   │
-  ╵─ <Modal /> (UI)
+  ╵─ <Backdrop /> (UI)
 
 REDUX
 
@@ -53,38 +53,3 @@ REDUX
     - removeAppFromHost
       • in: {app}, 'hostName'
       • out: {apps by host}
-
-COMPONENTS
-
-<App />: (Router)
-  - 
-
-<Header />:
-  - 
-
-<Home />:
-  - 
-
-<ViewChanger />:
-  - 
-
-<HostList />:
-  - 
-
-<HostCard />:
-  - 
-
-<HostPage />:
-  - 
-
-<ViewChanger />:
-  - 
-
-<AppsList />:
-  - 
-
-<AppCard />:
-  - 
-
-<Modal />: 
-  - 

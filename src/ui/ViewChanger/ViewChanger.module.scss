@@ -2,13 +2,13 @@
 
 .viewChanger {
   align-self: flex-end;
-  margin: 15px 5%;
+  margin: 18px 5% 15px;
 
   button {
     border: none;
     color: white;
     background-color: $lighter;
-    cursor: pointer;
+    
     padding: 5px 10px;
     margin-left: 5px;
     font-size: 1em;

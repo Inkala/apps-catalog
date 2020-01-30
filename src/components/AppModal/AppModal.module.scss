@@ -1,0 +1,78 @@
+@import '../../variables.scss';
+
+.modal {
+  position: fixed;
+  width: 75%;
+  align-self: center;
+  margin-top: 15%;
+  padding: 30px 23px 15px;
+  z-index: 500;
+  background-color: white;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+  transition: all 0.2s ease-out;
+  border-bottom: 6px solid $main;
+
+  .appName {
+    font-size: 1.35em;
+    margin: 0 auto 15px;
+    text-align: center;
+    width: 80%;
+  }
+
+  .closeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: $main;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8em;
+    border: none;
+    padding: 4px 8px;
+  }
+
+  ul {
+    padding: 0;
+    margin: 8px auto;
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      list-style: none;
+    }
+
+    span {
+      color: $main;
+      font-weight: bold;
+    }
+  }
+
+  .stats {
+    li {
+      margin-right: auto;
+    }
+  }
+
+  .host,
+  .contributors {
+    li {
+      text-transform: capitalize;
+      margin-right: 5px;
+      &:after {
+        content: ',';
+      }
+      &:first-child:after,
+      &:last-child:after {
+        content: '';
+      }
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .modal {
+    width: 50%;
+  }
+}
