@@ -13,12 +13,17 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.GET_ALL_TOP_APPS:
       return {
-        ...state        
+        ...state
       };
     case actionTypes.GET_TOP_APPS_BY_HOST:
       return {
         ...state,
         topAppsByHost: allTopApps[action.hostName]
+      };
+    case actionTypes.CHANGE_VIEW_STYLE:
+      return {
+        ...state,
+        viewStyle: action.style === 'grid' ? 'grid' : 'list'
       };
     default:
       return state;

@@ -8,13 +8,14 @@ import HostCard from '../HostCard/HostCard';
 import classes from './HostList.module.scss';
 
 class HostsList extends Component {
-
   componentDidMount() {
     this.props.onGetAllTopApps();
   }
 
   render() {
-    const { allTopApps } = this.props;
+    const { allTopApps, viewStyle } = this.props;
+    console.log(viewStyle);
+
     let appsList = [];
     if (allTopApps) {
       for (let host in allTopApps) {
@@ -26,8 +27,9 @@ class HostsList extends Component {
         appsList.push(appCard);
       }
     }
+    const viewClass = viewStyle === 'grid' ? classes.grid : classes.list;
     return (
-      <section className={classes.hostsList}>
+      <section className={`${classes.hostsList} ${viewClass}`}>
         {appsList}
       </section>
     );
@@ -36,12 +38,14 @@ class HostsList extends Component {
 
 HostsList.propTypes = {
   allTopApps: PropTypes.object,
-  onGetAllTopApps: PropTypes.func
+  onGetAllTopApps: PropTypes.func,
+  viewStyle: PropTypes.string
 };
 
 const mapStateToProps = state => {
   return {
-    allTopApps: state.allTopApps
+    allTopApps: state.allTopApps,
+    viewStyle: state.viewStyle
   };
 };
 

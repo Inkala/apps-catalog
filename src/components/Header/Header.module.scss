@@ -21,5 +21,9 @@
   a {
     color: $main;
     text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
