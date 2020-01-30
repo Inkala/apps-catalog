@@ -9,7 +9,7 @@
 
   .title {
     text-transform: uppercase;
-    margin: 5px 0 0;
+    margin: 2px 0 15px;
     font-weight: bold;
     text-align: center;
     color: $main;
@@ -20,8 +20,8 @@
     border: none;
     font-size: 1em;
     color: $main;
-    margin: -2px 10px 10px;
-    align-self: flex-start;
+    margin: 5px 10px;
+    align-self: flex-end;
 
     &:hover {
       font-weight: 600;

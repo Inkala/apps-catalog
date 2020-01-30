@@ -7,22 +7,32 @@ import classes from './ActionButtons.module.scss';
 
 class ActionButtons extends Component {
   state = {
-    dropdownVisible: false
+    dropdownVisible: false,
+    redirect: false
   };
 
-  clickHandler = (app, newHost, currentHost) => {
+  handleClickHost = (app, newHost, currentHost) => {
     this.props.onAddAppToHost(app, newHost, currentHost);
     this.props.modalClosed();
   };
 
+  handleDropdownToggle = () => {
+    this.setState({ dropdownVisible: !this.state.dropdownVisible });
+  };
+
   render() {
     const { app, hostName, hostsList, remove } = this.props;
-
+    const dropdownClasses = [classes.dropdownWrapper];
+    if (this.state.dropdownVisible) {
+      dropdownClasses.push(classes.vissible);
+    }
     return (
       <section className={classes.actionsButtons}>
         <section className={classes.addSection}>
-          <button className={classes.add}>Add to Host</button>
-          <div className={classes.dropdownWrapper}>
+          <button className={classes.add} onClick={this.handleDropdownToggle}>
+            Add to Host
+          </button>
+          <div className={dropdownClasses.join(' ')}>
             {hostsList.map(newHost => {
               let disabled = true;
               if (app.host.indexOf(newHost) < 0) {
@@ -32,7 +42,7 @@ class ActionButtons extends Component {
                 <button
                   key={newHost}
                   className={classes.dropdown}
-                  onClick={() => this.clickHandler(app, newHost, hostName)}
+                  onClick={() => this.handleClickHost(app, newHost, hostName)}
                   disabled={disabled}
                 >
                   {newHost.match(/(?<=\.)(.*?)(?=\.)/g)[0]}
@@ -70,7 +80,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onAddAppToHost: (app, newHost, currentHost) =>
-      dispatch(actions.addAppToHost(app, newHost, currentHost))
+      dispatch(actions.addAppToHost(app, newHost, currentHost)),
   };
 };
 

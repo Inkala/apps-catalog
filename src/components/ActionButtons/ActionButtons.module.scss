@@ -15,7 +15,10 @@
       flex-direction: column;
       background-color: $ash;
       width: 100%;
-      top: 35px;
+      top: 50px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.1s ease-out;
 
       .dropdown {
         background: none;
@@ -39,6 +42,12 @@
         }
       }
     }
+    .vissible {
+      height: auto;
+      max-height: 195px;
+      transition: max-height 0.2s ease-out;
+      overflow: auto;
+    }
   }
 
   .add,
@@ -48,11 +57,14 @@
     font-weight: 600;
     border: none;
     font-size: 0.9em;
-    height: 35px;
+    height: 50px;
   }
 
   .add {
     background-color: $lighter;
+    &:focus {
+      outline: none;
+    }
     &:hover {
       background-color: $main;
     }
@@ -63,6 +75,33 @@
     margin-left: 10px;
     &:hover {
       background-color: #ce3d24;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .actionsButtons {
+    .addSection {
+      .vissible {
+        max-height: 255px;
+      }
+      .dropdownWrapper {
+        top: 35px;
+      }
+    }
+    .add,
+    .remove {
+      height: 35px;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .actionsButtons {
+    .addSection {
+      .vissible {
+        max-height: 315px;
+      }
     }
   }
 }

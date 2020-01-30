@@ -24,6 +24,8 @@ class AppsList extends Component {
   };
 
   modalClosedHandler = () => {
+    const hostName = this.props.match.params.name;
+    this.props.onGetTopAppsByHost(hostName);
     this.setState({ modalShow: false, appClicked: {} });
   };
 
@@ -41,10 +43,6 @@ class AppsList extends Component {
           app={appClicked}
         />
         <h2 className={classes.title}>{hostName}</h2>
-        <button
-          className={classes.backButton}
-          onClick={() => this.props.history.goBack()}
-        >{`<< Back`}</button>
         {topAppsByHost && topAppsByHost.length
           ? topAppsByHost.map((app, i) => (
               <button
@@ -52,10 +50,18 @@ class AppsList extends Component {
                 className={classes.appCardButton}
                 onClick={() => this.showModalHandler(app)}
               >
-                <div><h3 className={classes.cardTitle}><span>{i+1} -</span> {app.name}</h3></div>
+                <div>
+                  <h3 className={classes.cardTitle}>
+                    <span>{i + 1} -</span> {app.name}
+                  </h3>
+                </div>
               </button>
             ))
           : null}
+        <button
+          className={classes.backButton}
+          onClick={() => this.props.history.goBack()}
+        >{`<< Back`}</button>
       </section>
     );
   }

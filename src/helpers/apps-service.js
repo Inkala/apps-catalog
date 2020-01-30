@@ -4,14 +4,10 @@ const groupAppsByHost = () => {
   const allAppsObj = {};
   appsData.map(app =>
     app.host.map(hostName => {
-      // Copy to  prevent data mutation
-      const appCopy = { ...app };
-      appCopy.contributors = [...appCopy.contributors];
-      appCopy.host = [...appCopy.host];
       if (allAppsObj[hostName]) {
-        return allAppsObj[hostName].push(appCopy);
+        return allAppsObj[hostName].push(app);
       } else {
-        return (allAppsObj[hostName] = [appCopy]);
+        return (allAppsObj[hostName] = [app]);
       }
     })
   );
@@ -40,13 +36,18 @@ export const getTopAppsByHost = hostName => {
 };
 
 export const addAppToHost = (app, newHost, currentHost) => {
-  allAppsObj[newHost].push(app);
+  if (allAppsObj[newHost].indexOf(app) < 0) {
+    app.host.push(newHost)
+    allAppsObj[newHost].push(app);
+  };
   return getTopAppsByHost(currentHost);
 };
 
 export const removeAppFromHost = (app, hostName) => {
-  const index = allAppsObj[hostName].indexOf(app);
-  allAppsObj[hostName].splice(index, 1);
+  const indexInHostArray = app.host.indexOf(hostName);
+  app.host.splice(indexInHostArray, 1)
+  const indexInAllApps = allAppsObj[hostName].indexOf(app);
+  allAppsObj[hostName].splice(indexInAllApps, 1);
   return getTopAppsByHost(hostName);
 };
 
