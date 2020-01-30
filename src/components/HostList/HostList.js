@@ -14,8 +14,6 @@ class HostsList extends Component {
 
   render() {
     const { allTopApps, viewStyle } = this.props;
-    console.log(viewStyle);
-
     let appsList = [];
     if (allTopApps) {
       for (let host in allTopApps) {

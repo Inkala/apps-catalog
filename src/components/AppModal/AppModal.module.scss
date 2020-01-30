@@ -69,6 +69,33 @@
       }
     }
   }
+  .actionsButtons {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      color: white;
+      padding: 8px 12px 9px;
+      font-weight: 600;
+      border: none;
+      font-size: 0.9em;
+      margin: 2px 0 0 8px;
+    }
+
+    .add {
+      background-color: $lighter;
+       &:hover {
+         background-color: $main;
+       }
+    }
+    .remove {
+      background-color: $accent;
+      
+      &:hover {
+        background-color: #ce3d24;
+      }
+    }
+  }
 }
 
 @media (min-width: 600px) {

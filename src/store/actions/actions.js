@@ -17,3 +17,17 @@ export const changeViewStyle = style => {
     style
   };
 };
+
+export const addAppToHost = (app, hostName) => {
+  return {
+    type: actionTypes.ADD_APP_TO_HOST
+  };
+};
+
+export const removeAppFromHost = (app, hostName) => {
+  return {
+    type: actionTypes.REMOVE_APP_FROM_HOST,
+    app,
+    hostName
+  };
+};

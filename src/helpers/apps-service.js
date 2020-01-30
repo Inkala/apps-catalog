@@ -11,26 +11,41 @@ const groupAppsByHost = () => {
       if (allAppsObj[hostName]) {
         return allAppsObj[hostName].push(appCopy);
       } else {
-        return allAppsObj[hostName] = [appCopy];
+        return (allAppsObj[hostName] = [appCopy]);
       }
     })
   );
   return allAppsObj;
 };
 
-const sortApps = allAppsObj => {
-  const appList = {};
-  for (let host in allAppsObj) {
-    // Format name for titles and urls
-    const hostName = host.match(/(?<=\.)(.*?)(?=\.)/g)[0];
-    const transformedArr = allAppsObj[host]
-      .sort((a, b) => b.apdex - a.apdex)
-      .slice(0, 25);
-    appList[hostName] =  transformedArr;
-  }
-  return appList;
-};
-
+// Big opperation. Only done the first time
+// Data is available as a global variable
 const allAppsObj = groupAppsByHost();
 
-export const allTopApps = sortApps(allAppsObj);
+
+const sortApps = allApps => {
+  const sortedApps = allApps.sort((a, b) => b.apdex - a.apdex);
+  return sortedApps;
+};
+
+export const getAllTopApps = () => {
+  const appsList = {};
+  for (let host in allAppsObj) {
+    appsList[host] = sortApps(allAppsObj[host]).slice(0, 5);
+  }
+  return appsList;
+};
+
+export const getTopAppsByHost = hostName => {
+  return sortApps(allAppsObj[hostName]).slice(0, 25)
+};
+
+export const addAppToHost = (app, hostName) => {
+  
+}
+
+export const removeAppFromHost = (app, hostName) => {
+  const index = allAppsObj[hostName].indexOf(app);
+  allAppsObj[hostName].splice(index, 1);
+  return getTopAppsByHost(hostName);
+}

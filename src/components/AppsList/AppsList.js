@@ -30,12 +30,14 @@ class AppsList extends Component {
   render() {
     const { topAppsByHost } = this.props;
     const { modalShow, appClicked } = this.state;
-    const hostName = this.props.match.params.name;
+    const host = this.props.match.params.name;
+    const hostName = host.match(/(?<=\.)(.*?)(?=\.)/g)[0];
     return (
       <section className={classes.appsList}>
         <Modal
           show={modalShow}
           modalClosed={this.modalClosedHandler}
+          hostName={host}
           app={appClicked}
         />
         <h2 className={classes.title}>{hostName}</h2>
