@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
+import { cloneAppsObject, cloneAppsArray } from '../../helpers/deep-cloner';
 import {
   getAllTopApps,
   getTopAppsByHost,
@@ -8,9 +9,9 @@ import {
 } from '../../helpers/apps-service';
 
 const initialState = {
-  allTopApps: null,
-  hostsList,
+  allTopApps: {},
   topAppsByHost: [],
+  hostsList,
   isVisible: false,
   viewStyle: 'grid'
 };
@@ -18,33 +19,37 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.GET_ALL_TOP_APPS:
+      const allApps = cloneAppsObject(getAllTopApps());
       return {
         ...state,
-        allTopApps: getAllTopApps()
+        allTopApps: allApps
       };
     case actionTypes.GET_TOP_APPS_BY_HOST:
+      const appsByHost = cloneAppsArray(getTopAppsByHost(action.hostName));
       return {
         ...state,
-        topAppsByHost: getTopAppsByHost(action.hostName)
+        topAppsByHost: appsByHost
+      };
+    case actionTypes.ADD_APP_TO_HOST:
+      const addedApp = cloneAppsArray(
+        addAppToHost(action.app, action.newHost, action.currentHost)
+      );
+      return {
+        ...state,
+        topAppsByHost: addedApp
+      };
+    case actionTypes.REMOVE_APP_FROM_HOST:
+      const removedApp = cloneAppsArray(
+        removeAppFromHost(action.app, action.hostName)
+      );
+      return {
+        ...state,
+        topAppsByHost: removedApp
       };
     case actionTypes.CHANGE_VIEW_STYLE:
       return {
         ...state,
         viewStyle: action.style === 'grid' ? 'grid' : 'list'
-      };
-    case actionTypes.ADD_APP_TO_HOST:
-      return {
-        ...state,
-        topAppsByHost: addAppToHost(
-          action.app,
-          action.newHost,
-          action.currentHost
-        )
-      };
-    case actionTypes.REMOVE_APP_FROM_HOST:
-      return {
-        ...state,
-        topAppsByHost: removeAppFromHost(action.app, action.hostName)
       };
     default:
       return state;
@@ -52,4 +57,3 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
-
