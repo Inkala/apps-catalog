@@ -28,6 +28,6 @@ At first I tried copying the data to prevent data mutation, but since the apps h
 
 There are always things that you want to improve when developing something. For example I would have added a confirmation message for add and remove apps from host.
  
-I also haven't worked much with tests and I tried adding some testing with Enzyme and Chai, but there was so much going on and a big part of the app behaves conditionally that I was not able to.
+I also haven't worked much with tests and I tried adding some testing with [Enzyme](https://airbnb.io/enzyme/) and [Chai](https://www.chaijs.com/), but there was so much going on and a big part of the app behaves conditionally that I was not able to.
  
 If I had more time I would have done a lot more research on testing to add some.
