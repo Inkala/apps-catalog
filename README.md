@@ -1,68 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About this test
 
-## Available Scripts
+To see this test working, clone the repository, type `npm install` from the root folder and then type `npm start`.
 
-In the project directory, you can run:
+### The test
 
-### `yarn start`
+The home page shows the best 5 apps per host. When a host card is clicked, the app shows a page with the best 25 apps from that host. And when one of the apps is clicked, a modal appears with all the information about the app and the buttons to remove it from the host or to add it to another host.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The data is not persistent when the browser gets refreshed.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Technologies used
 
-### `yarn test`
+For this test I chose to use [React](https://reactjs.org/) for it is the JavaScript tool in which I have more knowledge and experience.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I used [Redux](https://redux.js.org/) because having a global state can be really useful when handling data that should be available and modified by more than one component and because I believe it is the tool that is most often used with [React](https://reactjs.org/).
 
-### `yarn build`
+### Success
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+All the functionalities that were added to the app are working as expected. The "getTopAppsByHost" method retrieves the correct information and the "addAppToHosts" and "removeAppFromHosts" modify the data in all the views.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Challenges
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Transforming the information in the JSON file to be grouped by hosts so it could be filtered and edited by different methods was quite challenging. I tried different approaches until I found one that worked for all of them.
 
-### `yarn eject`
+At first I tried copying the data to prevent data mutation, but since the apps had to be edited from many different places, handling the original data seemed to be a better approach and the data only gets copied before being returned as the new state by the reducer.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### What to improve
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+There are always things that you want to improve when developing something. For example I would have added a confirmation message for add and remove apps from host.
+ 
+I also haven't worked much with tests and I tried adding some testing with Enzyme and Chai, but there was so much going on and a big part of the app behaves conditionally that I was not able to.
+ 
+If I had more time I would have done a lot more research on testing to add some.
